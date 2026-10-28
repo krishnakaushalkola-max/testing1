@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>K. Krishna Kaushal — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--floor:#e9f0f3;--panel:#f7fafb;--ink:#12232e;--mute:#566a76;--tape:#12232e;--teal:#0b8f8f;--tealsoft:#cfeaea;--line:#c5d3da;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--floor:#0f1b23;--panel:#16262f;--ink:#e6f0f4;--mute:#8fa5b1;--tape:#e6f0f4;--teal:#38c7c7;--tealsoft:#17383c;--line:#27404c}}
+:root[data-theme="dark"]{--floor:#0f1b23;--panel:#16262f;--ink:#e6f0f4;--mute:#8fa5b1;--tape:#e6f0f4;--teal:#38c7c7;--tealsoft:#17383c;--line:#27404c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--floor);color:var(--ink);font:400 1.08rem/1.65 "Source Serif 4",Georgia,serif}
+h1,h2,h3,.ui{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(18px,4vw,48px);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:500}
+nav div{display:flex;gap:clamp(12px,2.5vw,28px);align-items:center}
+nav a{text-decoration:none;font-size:.95rem}nav a:hover{color:var(--teal)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;cursor:crosshair}
+#cv{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.hero .wrap{position:relative;width:100%;pointer-events:none;padding-top:40px;padding-bottom:30vh}
+.hero .wrap a,.hero .wrap button{pointer-events:auto}
+.hero h1{font-weight:800;font-size:clamp(3rem,10.5vw,8.2rem);line-height:.92;letter-spacing:-.035em;margin:0}
+.hero p.tag{font-size:clamp(1.15rem,2.2vw,1.55rem);max-width:30ch;margin:22px 0 0;font-style:italic}
+.meta{margin:10px 0 0;color:var(--mute)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{font:600 1rem "Bricolage Grotesque",system-ui,sans-serif;padding:13px 24px;border-radius:999px;border:2px solid var(--ink);background:none;color:var(--ink);text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn.main{background:var(--ink);color:var(--floor)}
+.btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.hint{position:absolute;left:clamp(18px,4vw,40px);bottom:24px;font:500 .9rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--mute);display:flex;gap:12px;align-items:center}
+.hint button{font:inherit;color:var(--teal);background:none;border:0;cursor:pointer;text-decoration:underline;padding:4px}
+/* sections */
+section.s{padding:clamp(70px,11vw,130px) 0;border-top:1px solid var(--line)}
+h2{font-weight:700;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.025em;line-height:1.05;margin:0 0 14px}
+.lead{max-width:62ch;color:var(--mute);margin:0 0 40px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,5vw,64px)}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.fact h3{margin:0 0 4px;font-size:1.25rem}.fact p{margin:0 0 16px;color:var(--mute);font-size:1rem}
+/* projects */
+.proj{border-top:2px solid var(--ink)}
+.proj:last-child{border-bottom:2px solid var(--ink)}
+.proj>button{all:unset;box-sizing:border-box;width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;cursor:pointer}
+.proj>button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.proj h3{font-size:clamp(1.7rem,4.2vw,2.8rem);margin:0;letter-spacing:-.02em;line-height:1.05;transition:color .2s}
+.proj>button:hover h3{color:var(--teal)}
+.plus{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);position:relative;transition:transform .35s,background .2s}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:2px;background:var(--ink);transform:translate(-50%,-50%)}
+.plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.proj[data-open="true"] .plus{transform:rotate(45deg);background:var(--tealsoft)}
+.body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.proj[data-open="true"] .body{grid-template-rows:1fr}
+.body>div{overflow:hidden}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,4vw,56px);padding:4px 0 34px}
+.cols p{margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 16px;padding:0}
+.tags li{font:500 .88rem "Bricolage Grotesque",system-ui,sans-serif;background:var(--tealsoft);color:var(--ink);padding:5px 13px;border-radius:999px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:1rem}
+.box b{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+/* skills */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tab{font:600 1.1rem "Bricolage Grotesque",system-ui,sans-serif;padding:11px 26px;border-radius:999px;border:2px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--floor);border-color:var(--ink)}
+.skillpanel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:760px;min-height:150px}
+.skillpanel p{margin:0}
+/* contact */
+.mail{font:800 clamp(1.5rem,5.6vw,4rem);font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;word-break:break-word;text-decoration:none;border-bottom:4px solid var(--teal)}
+.mail:hover{color:var(--teal)}
+.rows{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+footer{padding:30px 0 50px;color:var(--mute);font-size:.95rem;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--floor);padding:10px 20px;border-radius:999px;font:600 .95rem "Bricolage Grotesque",system-ui,sans-serif;opacity:0;transition:.3s;z-index:9;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.about,.cols{grid-template-columns:1fr}nav div a.hide{display:none}.hero .wrap{padding-bottom:22vh}}
+@media print{nav,.hint,#cv,.cta,.plus,.tabs,.toast{display:none!important}.body{grid-template-rows:1fr!important}.hero{min-height:0}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<nav><a href="#top" class="ui" style="font-weight:800">KKK</a>
+<div><a class="hide" href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero" id="top">
+<canvas id="cv" aria-hidden="true"></canvas>
+<div class="wrap">
+<h1>K. Krishna<br>Kaushal</h1>
+<p class="tag" id="tagline">I build robots that move and models that learn.</p>
+<p class="meta ui">Computer Science, RV College of Engineering</p>
+<div class="cta"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#contact">Get in touch</a></div>
+</div>
+<div class="hint"><span id="hinttxt">Drag on the floor to lay a new line. Medbot will follow it.</span><button id="reset" type="button">Reset line</button></div>
+</header>
+
+<section class="s" id="about"><div class="wrap about">
+<div><h2>Engineer at the edge of hardware and software.</h2>
+<p>I study Computer Science at RV College of Engineering, and I like problems where code has to meet the physical world: sensors, motors, and real people who depend on the result.</p>
+<p>My projects solve a clear problem for a clear user. One carries medicine through hospital corridors. The other helps students learn and practice.</p></div>
+<aside class="fact"><h3>Education</h3><p>B.E. Computer Science and Engineering<br>RV College of Engineering, Bengaluru</p>
+<h3>Looking for</h3><p>Internships and entry-level roles in software, robotics, and AI/ML.</p>
+<button class="btn" type="button" onclick="window.print()">Save as PDF</button></aside>
+</div></section>
+
+<section class="s" id="projects"><div class="wrap">
+<h2>Projects</h2>
+<p class="lead">Select a project to see the problem, the build, and the result.</p>
+
+<div class="proj" data-open="false"><button type="button" aria-expanded="false" aria-controls="p1"><h3>Medbot</h3><span class="plus"></span></button>
+<div class="body" id="p1"><div><div class="cols"><div>
+<ul class="tags"><li>C</li><li>Line following</li><li>Sensors</li><li>Embedded</li></ul>
+<p><b class="ui">Problem.</b> Nurses and staff spend hours moving medicine between wards. Every trip is time away from patients.</p>
+<p><b class="ui">Build.</b> A line-following robot that carries medicine along fixed routes in a hospital. It reads the floor line with sensors and steers itself along the path.</p></div>
+<div class="box"><b>Result</b><br>Add your numbers here: payload, route length, accuracy, or an award. Specific figures make this the strongest line on your portfolio.</div></div></div></div></div>
+
+<div class="proj" data-open="false"><button type="button" aria-expanded="false" aria-controls="p2"><h3>Xlearn</h3><span class="plus"></span></button>
+<div class="body" id="p2"><div><div class="cols"><div>
+<ul class="tags"><li>Python</li><li>AI</li><li>Image analysis</li><li>Quiz engine</li></ul>
+<p><b class="ui">Problem.</b> Students learning anatomy need to spot fractures on X-rays and check what they know.</p>
+<p><b class="ui">Build.</b> An AI tool that detects fractures in medical images, paired with a quiz mode that tests students on what they have seen.</p></div>
+<div class="box"><b>Result</b><br>Add your model accuracy, dataset size, or the number of users who tried it.</div></div></div></div></div>
+</div></section>
+
+<section class="s" id="skills"><div class="wrap">
+<h2>Skills</h2>
+<p class="lead">Choose a tool to see where I use it.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="skillpanel" id="panel" role="tabpanel"></div>
+</div></section>
+
+<section class="s" id="contact"><div class="wrap">
+<h2>Let’s build something.</h2>
+<p class="lead">Open to internships and full-time roles. I reply fast.</p>
+<a class="mail" id="mail" href="#"></a>
+<div class="rows"><button class="btn" id="copyMail" type="button">Copy email</button><a class="btn" id="tel" href="#"></a><a class="btn" id="gh" href="#" target="_blank" rel="noopener">GitHub</a><a class="btn" id="li" href="#" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></section>
+<footer>© <span id="yr"></span> K. Krishna Kaushal</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// EDIT THESE: your real details
+const ME={email:"krishnakaushalkola@gmail.com",phone:"+91 63031 70224",github:"",linkedin:"https://www.linkedin.com/search/results/people/?keywords=Krishna%20Kaushal%20Kola"};
+const $=s=>document.querySelector(s);
+$('#mail').textContent=ME.email;$('#mail').href="mailto:"+ME.email;
+$('#tel').textContent=ME.phone;$('#tel').href="tel:"+ME.phone.replace(/\s/g,'');
+if(ME.github)$('#gh').href=ME.github;else $('#gh').remove();$('#li').href=ME.linkedin;$('#yr').textContent=new Date().getFullYear();
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1800)}
+$('#copyMail').onclick=()=>{try{navigator.clipboard.writeText(ME.email).then(()=>toast('Email copied'),()=>toast(ME.email))}catch(e){toast(ME.email)}};
+// projects
+document.querySelectorAll('.proj>button').forEach(b=>b.onclick=()=>{const p=b.parentElement,o=p.dataset.open!=="true";p.dataset.open=o;b.setAttribute('aria-expanded',o)});
+// skills
+const SK={Python:"My main language for AI work. I used it to build Xlearn: fracture detection on images and the quiz logic behind it.",C:"Close-to-hardware code. I used it to read line sensors and drive the motors on Medbot, where timing and memory matter.",Git:"Version control for every project. Branches for experiments, commits that explain why, and a history I can roll back."};
+const tabs=$('#tabs'),panel=$('#panel');
+Object.keys(SK).forEach((k,i)=>{const b=document.createElement('button');b.className='tab';b.type='button';b.role='tab';b.textContent=k;b.onclick=()=>sel(k);tabs.appendChild(b)});
+function sel(k){tabs.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.textContent===k));panel.innerHTML='<p></p>';panel.firstChild.textContent=SK[k]}
+sel('Python');
+// robot floor
+const cv=$('#cv'),cx=cv.getContext('2d'),hero=$('#top');
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W,H,path=[],demoMode=true,idx=1,R={x:0,y:0,a:0},drawing=false,last=0;
+function demo(){path=[];demoMode=true;for(let x=-30;x<=W+30;x+=7)path.push({x,y:H*.78+Math.sin(x/130)*H*.07+Math.sin(x/45)*5});start()}
+function start(){idx=1;R.x=path[0].x;R.y=path[0].y;R.a=Math.atan2(path[1].y-path[0].y,path[1].x-path[0].x)}
+function size(){const d=devicePixelRatio||1,r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);demo();if(still){idx=Math.floor(path.length*.55);R.x=path[idx].x;R.y=path[idx].y;R.a=0;render()}}
+function render(){
+const cs=getComputedStyle(document.documentElement),tape=cs.getPropertyValue('--tape'),teal=cs.getPropertyValue('--teal');
+cx.clearRect(0,0,W,H);
+cx.strokeStyle=cs.getPropertyValue('--line');cx.lineWidth=1;
+for(let x=0;x<W;x+=64){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+for(let y=0;y<H;y+=64){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+if(path.length>1){cx.strokeStyle=tape;cx.lineWidth=9;cx.lineCap=cx.lineJoin='round';cx.beginPath();cx.moveTo(path[0].x,path[0].y);for(const p of path)cx.lineTo(p.x,p.y);cx.stroke()}
+cx.save();cx.translate(R.x,R.y);cx.rotate(R.a);
+cx.fillStyle='rgba(0,0,0,.18)';cx.beginPath();cx.roundRect(-18,-9,42,28,8);cx.fill();
+cx.fillStyle=teal;cx.beginPath();cx.roundRect(-22,-15,44,30,8);cx.fill();
+cx.fillStyle='#fff';cx.fillRect(-12,-3,12,6);cx.fillRect(-9,-6,6,12);
+cx.fillStyle='#e5484d';for(const s of[-8,8]){cx.beginPath();cx.arc(19,s,3.2,0,7);cx.fill()}
+cx.restore()}
+function tick(t){const dt=Math.min((t-last)/1000,.05);last=t;
+if(path.length>1&&idx<path.length&&!drawing){let left=190*dt;while(left>0&&idx<path.length){const p=path[idx],dx=p.x-R.x,dy=p.y-R.y,d=Math.hypot(dx,dy);if(d<=left){R.x=p.x;R.y=p.y;left-=d;idx++}else{R.x+=dx/d*left;R.y+=dy/d*left;left=0}}
+const p=path[Math.min(idx,path.length-1)],ta=Math.atan2(p.y-R.y,p.x-R.x);let da=ta-R.a;da=Math.atan2(Math.sin(da),Math.cos(da));R.a+=da*Math.min(1,dt*12)}
+if(idx>=path.length&&demoMode)start();
+render();requestAnimationFrame(tick)}
+const onUI=e=>e.target.closest('a,button');
+hero.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||onUI(e))return;drawing=true;demoMode=false;path=[{x:e.offsetX,y:e.clientY-cv.getBoundingClientRect().top}];$('#hinttxt').textContent='Release to send Medbot.'});
+hero.addEventListener('pointermove',e=>{if(!drawing)return;const y=e.clientY-cv.getBoundingClientRect().top,x=e.clientX-cv.getBoundingClientRect().left,l=path[path.length-1];if(Math.hypot(x-l.x,y-l.y)>6)path.push({x,y})});
+addEventListener('pointerup',()=>{if(!drawing)return;drawing=false;if(path.length<3){demo()}else{start()}$('#hinttxt').textContent='Drag on the floor to lay a new line. Medbot will follow it.'});
+$('#reset').onclick=()=>{demo();if(still)render()};
+addEventListener('resize',size);size();if(!still)requestAnimationFrame(tick);
+</script>
+</body>
+</html>
