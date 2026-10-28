@@ -20,7 +20,8 @@
     function esc(t) {
       return String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     }
-    fetch("team.json")
+    // no-store + a changing ?v= so browsers never show an outdated team list after a deploy
+    fetch("team.json?v=" + Date.now(), { cache: "no-store" })
       .then(r => r.json())
       .then(team => {
         document.getElementById("team").innerHTML = team.map(m => `
