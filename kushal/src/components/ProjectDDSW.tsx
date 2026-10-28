@@ -108,7 +108,7 @@ export function ProjectDDSW() {
                   <span className="screen-title">Dark-Field Optical Microscope Capture (Wafer 1)</span>
                 </div>
                 <img
-                  src="/images/ddsw/wafer-sample.jpg"
+                  src="images/ddsw/wafer-sample.jpg"
                   alt="Patterned silicon wafer under dark-field microscopy"
                   className="screen-img microscope-img"
                 />

@@ -2,35 +2,35 @@ import { useState } from 'react'
 
 export function ProjectFocusOrb() {
   const [activeTab, setActiveTab] = useState<'mechanics' | 'canvas' | 'gallery'>('mechanics')
-  const [activeWatchImg, setActiveWatchImg] = useState<string>('/images/focusorb/watch-running.png')
+  const [activeWatchImg, setActiveWatchImg] = useState<string>('images/focusorb/watch-running.png')
 
   const watchProgression = [
     {
-      src: '/images/focusorb/watch-running.png',
+      src: 'images/focusorb/watch-running.png',
       step: '01',
       title: 'Active Orb',
       desc: 'Breathing radial gradient canvas with ambient mode wrist support (Ongoing Activity API).',
     },
     {
-      src: '/images/focusorb/watch-damage-1.png',
+      src: 'images/focusorb/watch-damage-1.png',
       step: '02',
       title: 'Distraction Impact',
       desc: 'First hit fractures the crystalline surface; directional screen-shake and heavy haptics trigger.',
     },
     {
-      src: '/images/focusorb/watch-shattered.png',
+      src: 'images/focusorb/watch-shattered.png',
       step: '03',
       title: 'Orb Shattered',
       desc: 'Poison ticks every 5s deplete the 3 HP budget. Focus lost; energy dissipates.',
     },
     {
-      src: '/images/focusorb/watch-supernova.png',
+      src: 'images/focusorb/watch-supernova.png',
       step: '04',
       title: 'Supernova Collapse',
       desc: 'Successful session triggers an explosive implosion-burst, forging a collectible star.',
     },
     {
-      src: '/images/focusorb/watch-galaxy.png',
+      src: 'images/focusorb/watch-galaxy.png',
       step: '05',
       title: 'Hex-Spiral Galaxy',
       desc: 'Fling-scrollable 2D hex grid with fish-eye lens magnification displaying lifetime stars.',
@@ -222,7 +222,7 @@ fun hexToPixel(q: Int, r: Int, radius: Float, center: Offset): Offset {
                   <span className="screen-title">FocusOrb — Galaxy Canvas & Phone Shield</span>
                 </div>
                 <img
-                  src="/images/focusorb/watch-galaxy.png"
+                  src="images/focusorb/watch-galaxy.png"
                   alt="FocusOrb Star Galaxy Canvas"
                   className="screen-img galaxy-preview"
                 />
@@ -234,19 +234,19 @@ fun hexToPixel(q: Int, r: Int, radius: Float, center: Offset): Offset {
         {activeTab === 'gallery' && (
           <div className="screenshots-wall">
             <div className="wall-item">
-              <img src="/images/focusorb/hero.png" alt="FocusOrb Dual-Device Hero" />
+              <img src="images/focusorb/hero.png" alt="FocusOrb Dual-Device Hero" />
               <span>Dual-Device System: Watch Orb & Phone Shield</span>
             </div>
             <div className="wall-item">
-              <img src="/images/focusorb/phone-dashboard.png" alt="Phone Dashboard" />
+              <img src="images/focusorb/phone-dashboard.png" alt="Phone Dashboard" />
               <span>Session History & Weekly Analytics</span>
             </div>
             <div className="wall-item">
-              <img src="/images/focusorb/phone-picker.png" alt="App Picker" />
+              <img src="images/focusorb/phone-picker.png" alt="App Picker" />
               <span>Searchable App Picker & One-Tap Blocklist</span>
             </div>
             <div className="wall-item">
-              <img src="/images/focusorb/watch-voyage.png" alt="Star Voyage" />
+              <img src="images/focusorb/watch-voyage.png" alt="Star Voyage" />
               <span>Star Voyage Animation into Hex Grid</span>
             </div>
           </div>
