@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ramteja – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9E8EE; --ink:#1E2338; --soft:#D9DAE5; --text2:#545B76;
+  --accent:#4F7366; --hi:#C2AB78; --line:#C6C8D8; --hero:#262E4D; --herotext:#ECEBF2;
+  --card:#F6F6FA; --c1:#2F7A60; --c2:#8F6A1F; --c3:#6048A0; --onc:#fff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#141A2E;--ink:#E6E7EE;--soft:#1E2640;--text2:#9AA1BD;--accent:#9FBBAD;--line:#2C3557;--hero:#1B2240;--card:#1A2140;--c1:#7FBFA5;--c2:#D9B56A;--c3:#A592D6;--onc:#141A2E}
+}
+:root[data-theme="dark"]{--bg:#141A2E;--ink:#E6E7EE;--soft:#1E2640;--text2:#9AA1BD;--accent:#9FBBAD;--line:#2C3557;--hero:#1B2240;--card:#1A2140;--c1:#7FBFA5;--c2:#D9B56A;--c3:#A592D6;--onc:#141A2E}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Newsreader",Georgia,serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:none;margin:0;padding:0 clamp(20px,5vw,96px)}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;margin:0;line-height:1.02}
+
+/* hero: the one bold moment */
+.hero{min-height:94vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:clamp(80px,14vh,160px);position:relative;isolation:isolate;background:var(--hero);color:var(--herotext);overflow:hidden}
+.hero .wrap{width:100%;padding-bottom:clamp(32px,6vh,64px)}
+h1{font-weight:800;font-size:clamp(3.4rem,19vw,30rem);letter-spacing:-.04em;line-height:.9;display:flex;flex-wrap:wrap;cursor:default;touch-action:pan-y}
+h1 span{display:inline-block;font-variation-settings:"wdth" 100,"wght" 800}
+.tag{font-style:italic;font-size:clamp(1.25rem,3vw,1.9rem);line-height:1.3;max-width:28ch;margin:28px 0 0;color:var(--herotext);opacity:.88}
+nav{display:flex;gap:22px;margin-top:32px;font:600 .95rem "Bricolage Grotesque",sans-serif;flex-wrap:wrap}
+nav a{text-decoration:none;padding-bottom:4px;border-bottom:2px solid rgba(236,235,242,.3);background:linear-gradient(var(--hi),var(--hi)) 0 100%/0 2px no-repeat;transition:background-size .4s cubic-bezier(.2,.7,.2,1),color .3s}
+nav a:hover{background-size:100% 2px;color:var(--hi)}
+.ticker{background:var(--hi);color:#0F1B3D;overflow:hidden;white-space:nowrap;padding:14px 0;font:800 1.3rem "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.ticker div{display:inline-block;animation:slide 30s linear infinite}
+.ticker span{display:inline-block;margin:0 28px}
+.ticker i{display:inline-block;width:.55em;height:.55em;background:#2F4BFF;transform:rotate(45deg);margin:0 6px;background:var(--hero)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.hero::before{content:"";position:absolute;inset:-20%;z-index:-1;background:radial-gradient(40% 40% at 25% 30%,rgba(126,156,142,.4),transparent 70%),radial-gradient(45% 45% at 80% 70%,rgba(194,171,120,.22),transparent 70%),radial-gradient(30% 30% at 55% 15%,rgba(201,130,107,.18),transparent 70%);animation:drift 16s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;inset:-20%;z-index:-1;background:radial-gradient(32% 32% at 72% 28%,rgba(138,120,184,.34),transparent 70%),radial-gradient(28% 28% at 12% 80%,rgba(95,156,134,.26),transparent 70%);animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(7%,-5%) scale(1.12)}}
+.hero .tag,.hero nav{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.hero .tag{animation-delay:.5s}.hero nav{animation-delay:.75s}
+.ticker{animation:rise 1s 1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--c1),var(--hi),var(--c3));transform-origin:0 50%;transform:scaleX(0);z-index:50}
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+h2::after{content:"";display:block;height:2px;width:3rem;background:var(--accent);margin-top:10px;transition:width .9s .35s cubic-bezier(.2,.7,.2,1)}
+.js h2:not(.in)::after{width:0}
+.words .w{opacity:.16;transition:opacity .6s}
+.words.in .w{opacity:1}
+.proj h3{transition:transform .4s cubic-bezier(.2,.7,.2,1),color .3s}
+.proj:hover h3{transform:translateX(8px);color:var(--accent)}
+.chips li{transition:background .3s,color .3s,transform .3s}
+.chips li:hover{background:var(--accent);color:var(--bg);transform:translateY(-3px)}
+.links a{text-underline-offset:4px;text-decoration-thickness:1.5px;transition:color .3s,text-underline-offset .3s}
+.links a:hover{color:var(--accent);text-underline-offset:8px}
+.tools li{transition:transform .3s,color .3s}
+.tools li:hover{transform:translateX(8px);color:var(--accent)}
+
+section{padding:clamp(64px,10vw,120px) 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:minmax(140px,200px) 1fr;gap:clamp(24px,5vw,72px)}
+h2{font-weight:600;font-size:1.15rem;letter-spacing:-.01em;position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start}
+.about p{margin:0;font-size:clamp(1.4rem,2.8vw,2.5rem);line-height:1.4;max-width:none}
+
+/* projects as wide rows */
+.proj{--c:var(--c1);position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,48px);padding:clamp(22px,3.5vw,38px) clamp(22px,3.5vw,38px) clamp(22px,3.5vw,38px) clamp(26px,4vw,44px);margin-bottom:28px;background:var(--card);border:1px solid var(--line);border-radius:24px;align-items:center;overflow:hidden}
+.proj:last-of-type{margin-bottom:0}
+.proj:nth-of-type(2){--c:var(--c2)}
+.proj:nth-of-type(3){--c:var(--c3)}
+.proj::before{content:"";position:absolute;inset:0 auto 0 0;width:7px;background:var(--c)}
+.proj::after{content:"";position:absolute;width:320px;height:320px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 28%,transparent),transparent);pointer-events:none;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.proj:hover::after{transform:scale(1.4) translate(-20px,20px)}
+.proj>*{position:relative;z-index:1}
+.proj h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.025em}
+.proj p{margin:12px 0 18px;color:var(--text2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 18px;list-style:none}
+.chips li{font:600 .82rem "Bricolage Grotesque",sans-serif;background:var(--soft);padding:5px 12px;border-radius:99px}
+.links a{font:600 .95rem "Bricolage Grotesque",sans-serif;margin-right:18px}
+.shot{aspect-ratio:4/3;border:1.5px solid var(--ink);border-radius:14px;display:grid;place-items:center;color:var(--text2);font:italic 1rem "Newsreader",serif;
+  background:repeating-linear-gradient(135deg,transparent 0 12px,var(--soft) 12px 13px);transition:transform .25s,box-shadow .25s}
+.proj:hover .shot{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--accent)}
+.proj:nth-of-type(even) .shot{order:-1}
+
+.shot.has-img{background:var(--soft);padding:12px;aspect-ratio:4/3}
+.shot img{display:block;width:100%;height:100%;object-fit:contain;border-radius:8px}
+.shot svg{display:block;width:100%;height:100%}
+h1 span:nth-child(1){color:#ECEBF2}h1 span:nth-child(2){color:#E0C98F}h1 span:nth-child(3){color:#A9DCC8}h1 span:nth-child(4){color:#C9B8F0}h1 span:nth-child(5){color:#ECEBF2}h1 span:nth-child(6){color:#F0B9A6}h1 span:nth-child(7){color:#E0C98F}
+.ticker i:nth-of-type(3n+1){background:#6048A0}.ticker i:nth-of-type(3n+2){background:#2F7A60}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0;padding:0;list-style:none}
+.badges li{font:600 .9rem "Bricolage Grotesque",sans-serif;padding:8px 16px;border-radius:99px;color:var(--ink);border:1px solid transparent;animation:bob 4.5s ease-in-out infinite alternate}
+.badges li:nth-child(1){background:color-mix(in srgb,var(--c1) 18%,transparent);border-color:color-mix(in srgb,var(--c1) 45%,transparent)}
+.badges li:nth-child(2){background:color-mix(in srgb,var(--c3) 18%,transparent);border-color:color-mix(in srgb,var(--c3) 45%,transparent);animation-delay:-1.5s}
+.badges li:nth-child(3){background:color-mix(in srgb,var(--c2) 20%,transparent);border-color:color-mix(in srgb,var(--c2) 45%,transparent);animation-delay:-3s}
+@keyframes bob{to{transform:translateY(-6px)}}
+#projects{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--c3) 8%,transparent))}
+.proj{transition:box-shadow .4s,border-color .4s}
+.proj:hover{border-color:var(--c);box-shadow:0 26px 46px -26px var(--c)}
+.js .proj.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s}
+.js .proj.rv.in:hover{transform:translateY(-6px)}
+.proj .shot{border-color:var(--c)}
+.proj .shot.has-img{background:color-mix(in srgb,var(--c) 12%,var(--soft))}
+.proj:hover .shot{box-shadow:6px 6px 0 var(--c)}
+.proj .chips li{background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent)}
+.proj .chips li:hover{background:var(--c);color:var(--onc);border-color:var(--c)}
+.proj:hover h3{color:var(--c)}
+.proj .links a{display:inline-block;margin:0 8px 8px 0;padding:8px 18px;border-radius:99px;background:var(--c);color:var(--onc);text-decoration:none;transition:transform .3s,box-shadow .3s}
+.proj .links a:hover{color:var(--onc);transform:translateY(-3px);box-shadow:0 10px 18px -8px var(--c)}
+.shot svg{animation:floaty 7s ease-in-out infinite alternate}
+@keyframes floaty{to{transform:translateY(-6px)}}
+.flag{transform-box:fill-box;transform-origin:0 50%;animation:wave 1.8s ease-in-out infinite alternate}
+@keyframes wave{to{transform:skewY(-9deg) scaleX(.88)}}
+.proj .shot svg path[fill="#6E9A87"],.proj .shot svg path[fill="#7FAE98"]{transform-box:fill-box;transform-origin:0 100%;animation:sway 3.6s ease-in-out infinite alternate}
+@keyframes sway{to{transform:rotate(8deg)}}
+.js .proj .gbar,.js .proj rect[height="10"][rx="5"][fill^="#"]{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);transition:transform 1.1s .5s cubic-bezier(.2,.7,.2,1)}
+.js .proj.in .gbar,.js .proj.in rect[height="10"][rx="5"][fill^="#"]{transform:scaleX(1)}
+/* tools */
+.tools>div{--t:var(--c1);background:var(--card);border:1px solid var(--line);border-top:5px solid var(--t);border-radius:18px;padding:22px 24px;transition:box-shadow .4s}
+.tools>div:nth-child(2){--t:var(--c2)}
+.tools>div:nth-child(3){--t:var(--c3)}
+.tools>div h3{color:var(--t)}
+.tools>div li:hover{color:var(--t)}
+.tools>div:hover{box-shadow:0 22px 40px -24px var(--t)}
+.js .tools>div.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.js .tools>div.rv.in:hover{transform:translateY(-6px)}
+#contact .grid>div{position:relative;overflow:hidden;isolation:isolate;background:var(--hero);color:var(--herotext);padding:clamp(26px,5vw,56px);border-radius:28px}
+#contact .grid>div::before{content:"";position:absolute;inset:-30%;z-index:-1;background:radial-gradient(35% 35% at 20% 30%,rgba(138,120,184,.4),transparent 70%),radial-gradient(35% 35% at 85% 80%,rgba(95,156,134,.35),transparent 70%);animation:drift 14s ease-in-out infinite alternate}
+#contact .grid>div p{color:inherit!important;opacity:.8}
+#contact .mail{color:var(--herotext);font-size:clamp(1.3rem,4.2vw,2.8rem)}
+#contact .social a{padding:9px 18px;border-radius:99px;border:1px solid rgba(236,235,242,.35);text-decoration:none;transition:background .3s,color .3s,transform .3s}
+#contact .social a:hover{background:var(--hi);color:#262E4D;border-color:var(--hi);transform:translateY(-3px)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tools h3{font-size:1rem;font-weight:600;margin-bottom:10px;color:var(--accent)}
+.tools ul{margin:0;padding:0;list-style:none;font-size:1.2rem;line-height:1.9}
+
+/* contact */
+.mail{font:800 clamp(1.8rem,6.5vw,4.4rem)/1.05 "Bricolage Grotesque",sans-serif;letter-spacing:-.035em;text-decoration:none;display:inline-block;overflow-wrap:anywhere;
+  background:linear-gradient(var(--hi),var(--hi)) 0 100%/0 .14em no-repeat;transition:background-size .35s}
+.mail:hover{background-size:100% .14em}
+.social{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;font:600 1rem "Bricolage Grotesque",sans-serif}
+footer{padding:32px 0 48px;color:var(--text2);font-size:.95rem;border-top:1px solid var(--line)}
+
+@media (max-width:760px){
+  .grid,.proj,.tools{grid-template-columns:1fr}
+  h2{position:static}
+  .proj:nth-of-type(even) .shot{order:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 aria-label="Ramteja"><span aria-hidden="true">R</span><span aria-hidden="true">a</span><span aria-hidden="true">m</span><span aria-hidden="true">t</span><span aria-hidden="true">e</span><span aria-hidden="true">j</span><span aria-hidden="true">a</span></h1>
+    <p class="tag">Exploring quantum machine learning, one clear and explainable project at a time.</p>
+    <nav aria-label="Sections">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#tools">Tools</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="ticker" aria-hidden="true"><div><span>Quantum machine learning</span><i></i><span>C</span><i></i><span>GTK3</span><i></i><span>Python</span><i></i><span>Explainable AI</span><i></i><span>Quantum machine learning</span><i></i><span>C</span><i></i><span>GTK3</span><i></i><span>Python</span><i></i><span>Explainable AI</span><i></i></div></div>
+</header>
+
+<main>
+<section id="about" class="about"><div class="wrap grid">
+  <h2>About me</h2>
+  <div><p>I’m an undergraduate student at RVCE, Bengaluru, working on quantum machine learning. I like building software that is clear to read and easy to explain, from C desktop apps to hybrid quantum-classical models. I work well in teams and enjoy taking an idea from research to a working prototype. I’m looking for quantum internships where I can apply and grow these skills.</p><ul class="badges"><li>RVCE, Bengaluru</li><li>Quantum machine learning</li><li>Open to quantum internships</li></ul></div>
+</div></section>
+
+<section id="projects"><div class="wrap grid">
+  <h2>Projects</h2>
+  <div>
+    <article class="proj">
+      <div>
+        <h3>Nutritional Flag Detection System</h3>
+        <p>A desktop app that tracks what you eat and flags nutritional gaps. It keeps multi-user profiles, calculates BMI and BMR, draws intake pie charts and gives weekly summaries.</p>
+        <ul class="chips"><li>C</li><li>GTK3</li><li>Cairo</li><li>File I/O</li></ul>
+        <div class="links"><a href="#">View code</a></div>
+      </div>
+      <div class="shot has-img"><svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a plate drawn as a pie chart with a flag on the low-intake slice, next to nutrient bars marked low or ok" font-family="'Bricolage Grotesque',sans-serif"><circle cx="130" cy="150" r="92" fill="var(--soft)" stroke="var(--line)" stroke-width="3"/><circle cx="130" cy="150" r="76" fill="none" stroke="var(--line)" stroke-width="1.5"/><g stroke="var(--soft)" stroke-width="2"><path d="M130 150L130 88A62 62 0 0 1 166.4 200.2Z" fill="#5F9C86"/><path d="M130 150L166.4 200.2A62 62 0 0 1 79.8 186.4Z" fill="#D9B56A"/><path d="M130 150L79.8 186.4A62 62 0 0 1 79.8 113.6Z" fill="#8A78B8"/><path d="M130 150L79.8 113.6A62 62 0 0 1 130 88Z" fill="#C9826B"/></g><circle cx="130" cy="150" r="16" fill="var(--soft)"/><path d="M102 95V50" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><path class="flag" d="M102 50L132 59L102 68Z" fill="#B85C45"/><rect x="246" y="64" width="138" height="172" rx="14" fill="none" stroke="var(--line)" stroke-width="2"/><g fill="var(--line)" opacity=".7"><rect x="260" y="118" width="110" height="10" rx="5"/><rect x="260" y="164" width="110" height="10" rx="5"/><rect x="260" y="210" width="110" height="10" rx="5"/></g><rect class="gbar" x="260" y="118" width="34" height="10" rx="5" fill="#C9826B"/><rect class="gbar" x="260" y="164" width="24" height="10" rx="5" fill="#C9826B"/><rect class="gbar" x="260" y="210" width="86" height="10" rx="5" fill="#5F9C86"/><g font-size="11" fill="var(--text2)"><text x="260" y="110">Protein</text><text x="260" y="156">Calcium</text><text x="260" y="202">Iron</text><text x="130" y="272" text-anchor="middle">Daily intake</text><text x="315" y="256" text-anchor="middle">Nutrient flags</text></g><g font-size="10" font-weight="700" text-anchor="end"><text x="370" y="110" fill="#B85C45">LOW</text><text x="370" y="156" fill="#B85C45">LOW</text><text x="370" y="202" fill="#2F7A60">OK</text></g></svg></div>
+    </article>
+    <article class="proj">
+      <div>
+        <h3>Hybrid Biodegradable PCBs</h3>
+        <p>A first-semester project on printed circuit boards that combine biodegradable materials with conventional ones, to cut down electronic waste. [Add your key result or finding.]</p>
+        <ul class="chips"><li>Biodegradable substrates</li><li>Circuit design</li><li>[Tool]</li></ul>
+        <div class="links"><a href="#">View report</a></div>
+      </div>
+      <div class="shot has-img"><svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a biodegradable circuit board with gold traces, a chip and a small leaf growing from the corner"><defs><pattern id="fib" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><line x1="0" y1="0" x2="0" y2="14" stroke="#8FA382" stroke-width="1" opacity=".4"/></pattern></defs><rect x="36" y="46" width="300" height="208" rx="14" fill="#A9B99A"/><rect x="36" y="46" width="300" height="208" rx="14" fill="url(#fib)"/><rect x="36" y="46" width="300" height="208" rx="14" fill="none" stroke="#7E9C8E" stroke-width="2"/><g fill="var(--soft)" stroke="#7E9C8E" stroke-width="2"><circle cx="56" cy="66" r="6"/><circle cx="316" cy="66" r="6"/><circle cx="56" cy="234" r="6"/><circle cx="316" cy="234" r="6"/></g><g fill="none" stroke="#C2AB78" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M72 146H160"/><path d="M72 160H120V212H200"/><path d="M72 174H160"/><path d="M260 146H300V100H220"/><path d="M260 174H300V200"/><path d="M106 95H140V130"/></g><g fill="#C2AB78"><rect x="160" y="143" width="10" height="6"/><rect x="160" y="157" width="10" height="6"/><rect x="160" y="171" width="10" height="6"/><rect x="250" y="143" width="10" height="6"/><rect x="250" y="171" width="10" height="6"/></g><rect x="170" y="135" width="80" height="50" rx="4" fill="#262E4D"/><circle cx="182" cy="147" r="3" fill="#C2AB78"/><rect x="92" y="90" width="28" height="10" rx="2" fill="#262E4D"/><g fill="#C2AB78" stroke="var(--soft)" stroke-width="2"><circle cx="72" cy="146" r="6"/><circle cx="72" cy="160" r="0"/><circle cx="72" cy="174" r="6"/><circle cx="200" cy="212" r="6"/><circle cx="300" cy="200" r="6"/><circle cx="220" cy="100" r="6"/></g><path d="M330 64C372 24 398 76 346 112C342 90 336 78 330 64Z" fill="#6E9A87"/><path d="M334 70Q352 82 348 102" fill="none" stroke="#A9C4B5" stroke-width="2" stroke-linecap="round"/><path d="M318 58C330 30 352 28 360 34C352 52 336 60 318 58Z" fill="#7FAE98"/></svg></div>
+    </article>
+    <article class="proj">
+      <div>
+        <h3>LiverQ: Quantum Liver Disease Screening</h3>
+        <p>A team project on explainable hybrid quantum-classical screening for early liver disease. It first separates disease from healthy, then stages hepatitis, fibrosis and cirrhosis, using the ILPD and HCV datasets.</p>
+        <ul class="chips"><li>Python</li><li>Quantum ML</li><li>scikit-learn</li><li>SHAP</li></ul>
+        <div class="links"><a href="#">View code</a></div>
+      </div>
+      <div class="shot has-img"><svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a quantum circuit feeding a bar chart of feature impact, representing hybrid quantum-classical liver screening with explanations" font-family="'Bricolage Grotesque',sans-serif"><g stroke="var(--ink)" stroke-width="2" opacity=".55"><path d="M24 90H236"/><path d="M24 140H236"/><path d="M24 190H236"/></g><g stroke="var(--ink)" stroke-width="2"><path d="M165 90V140"/><path d="M205 140V190"/></g><g fill="#C2AB78"><circle cx="165" cy="90" r="5"/><circle cx="205" cy="140" r="5"/></g><g fill="var(--soft)" stroke="var(--ink)" stroke-width="2"><circle cx="165" cy="140" r="10"/><circle cx="205" cy="190" r="10"/></g><g stroke="var(--ink)" stroke-width="2"><path d="M155 140H175M165 130V150M195 190H215M205 180V200"/></g><g fill="#262E4D" stroke="#7E9C8E" stroke-width="1.5"><rect x="45" y="75" width="30" height="30" rx="5"/><rect x="45" y="125" width="30" height="30" rx="5"/><rect x="45" y="175" width="30" height="30" rx="5"/><rect x="92" y="75" width="36" height="30" rx="5"/><rect x="92" y="125" width="36" height="30" rx="5"/><rect x="92" y="175" width="36" height="30" rx="5"/></g><g fill="#ECEBF2" font-size="14" font-weight="700" text-anchor="middle"><text x="60" y="95">H</text><text x="60" y="145">H</text><text x="60" y="195">H</text><text x="110" y="95">Ry</text><text x="110" y="145">Ry</text><text x="110" y="195">Ry</text></g><g fill="var(--soft)" stroke="var(--ink)" stroke-width="2"><rect x="236" y="76" width="28" height="28" rx="5"/><rect x="236" y="126" width="28" height="28" rx="5"/><rect x="236" y="176" width="28" height="28" rx="5"/></g><g fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"><path d="M243 96A7 7 0 0 1 257 96M250 96L255 88"/><path d="M243 146A7 7 0 0 1 257 146M250 146L255 138"/><path d="M243 196A7 7 0 0 1 257 196M250 196L255 188"/><path d="M268 140H284M279 135L284 140L279 145"/></g><g fill="var(--line)" opacity=".7"><rect x="292" y="92" width="90" height="10" rx="5"/><rect x="292" y="142" width="90" height="10" rx="5"/><rect x="292" y="192" width="90" height="10" rx="5"/></g><rect x="292" y="92" width="84" height="10" rx="5" fill="#C2AB78"/><rect x="292" y="142" width="58" height="10" rx="5" fill="#6E9A87"/><rect x="292" y="192" width="36" height="10" rx="5" fill="#6E9A87"/><g fill="var(--text2)" font-size="11"><text x="292" y="86">ALT</text><text x="292" y="136">AST</text><text x="292" y="186">Bilirubin</text><text x="145" y="250" text-anchor="middle">Quantum circuit</text><text x="338" y="250" text-anchor="middle">SHAP feature impact</text></g></svg></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="tools"><div class="wrap grid">
+  <h2>Tools I use</h2>
+  <div class="tools">
+    <div><h3>Languages</h3><ul><li>C</li><li>Python</li></ul></div>
+    <div><h3>Libraries</h3><ul><li>GTK3</li><li>Cairo</li><li>scikit-learn</li><li>SHAP</li></ul></div>
+    <div><h3>Everyday tools</h3><ul><li>VS Code</li><li>MSYS2</li><li>Obsidian</li></ul></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap grid">
+  <h2>Contact</h2>
+  <div>
+    <p style="margin:0 0 16px;color:var(--text2);font-size:1.2rem">Looking for quantum internships. Say hello:</p>
+    <a class="mail" href="mailto:ramtejalakkuru@gmail.com">ramtejalakkuru@gmail.com</a>
+    <div class="social"><a href="tel:+918978272137">+91 89782 72137</a><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Ramteja · <a href="../" style="color:inherit;text-decoration:underline">← Back to team</a></div></footer>
+
+<script>
+(function(){
+  var hd=document.querySelector('.hero'),L=[].slice.call(document.querySelectorAll('h1 span')),
+  reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,lo=200,hi=800,mx=null,cur=L.map(function(){return hi});
+  if(reduce)return;
+  hd.addEventListener('pointermove',function(e){mx=e.clientX});
+  hd.addEventListener('pointerleave',function(){mx=null});
+  function frame(now){
+    L.forEach(function(el,i){
+      var target;
+      if(mx===null){target=lo+(hi-lo)*(.5+.5*Math.sin(now/450-i*.8))}
+      else{var r=el.getBoundingClientRect(),k=Math.max(0,1-Math.abs(mx-(r.left+r.width/2))/220);target=lo+(hi-lo)*k*k}
+      cur[i]+=(target-cur[i])*.14;
+      el.style.fontVariationSettings='"wdth" 100,"wght" '+Math.round(cur[i]);
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var de=document.documentElement,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,bar=document.getElementById('bar');
+  function prog(){var m=de.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?scrollY/m:0)+')'}
+  addEventListener('scroll',prog,{passive:true});prog();
+  if(reduce)return;
+  de.classList.add('js');
+  var p=document.querySelector('.about p');
+  if(p){var ws=p.textContent.trim().split(/\s+/);p.textContent='';ws.forEach(function(w,i){var s=document.createElement('span');s.className='w';s.style.transitionDelay=(i*28)+'ms';s.textContent=w+' ';p.appendChild(s)});p.classList.add('words')}
+  function tag(sel,step){document.querySelectorAll(sel).forEach(function(el,i){el.classList.add('rv');el.style.setProperty('--d',((i%3)*step)+'s')})}
+  tag('h2',0);tag('.proj',0);tag('.tools > div',.12);tag('#contact .grid > div',0);
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
+  document.querySelectorAll('.rv,.words').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
