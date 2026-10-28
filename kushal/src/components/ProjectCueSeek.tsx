@@ -2,26 +2,26 @@ import { useState } from 'react'
 
 export function ProjectCueSeek() {
   const [activeTab, setActiveTab] = useState<'architecture' | 'adr' | 'gallery'>('architecture')
-  const [activeImage, setActiveImage] = useState<string>('/images/cueseek/dashboard.png')
+  const [activeImage, setActiveImage] = useState<string>('images/cueseek/dashboard.png')
 
   const galleryImages = [
     {
-      src: '/images/cueseek/dashboard.png',
+      src: 'images/cueseek/dashboard.png',
       caption: 'Operations Dashboard: Live status, CPU, memory, disk, and individual service health',
       label: 'Main Dashboard',
     },
     {
-      src: '/images/cueseek/phone-jellyfin.png',
+      src: 'images/cueseek/phone-jellyfin.png',
       caption: "Jellyfin Service Detail: Health checks, container state, and current streaming activity",
       label: 'Jellyfin Sheet',
     },
     {
-      src: '/images/cueseek/phone-restart.png',
+      src: 'images/cueseek/phone-restart.png',
       caption: 'Destructive Safeguards: Press-and-hold action with active workload warnings',
       label: 'Safety Press-Hold',
     },
     {
-      src: '/images/cueseek/watch.png',
+      src: 'images/cueseek/watch.png',
       caption: 'Wear OS Tile: Immediate wrist operational verdict and core system telemetry',
       label: 'Wear OS Watch',
     },
@@ -166,7 +166,7 @@ export function ProjectCueSeek() {
                   <span className="screen-title">CueSeek Dashboard — v0.1.4</span>
                 </div>
                 <img
-                  src="/images/cueseek/dashboard.png"
+                  src="images/cueseek/dashboard.png"
                   alt="CueSeek Dashboard"
                   className="screen-img"
                 />
