@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Portfolios · RVCE Skill Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">RVCE · CSE · Skill Lab</p>
+    <h1>Our team portfolios</h1>
+    <p class="intro">One repository, one GitHub Pages site. Each member's portfolio lives in its own folder and is published automatically on every push to <code>main</code>.</p>
+    <div id="team" class="grid"></div>
+    <footer>Built with GitHub Actions + GitHub Pages · <a href="https://github.com/krishnakaushalkola-max/testing1">source on GitHub</a></footer>
+  </main>
+
+  <script>
+    // The member list lives in team.json, so adding a teammate never needs a code change
+    function esc(t) {
+      return String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    fetch("team.json")
+      .then(r => r.json())
+      .then(team => {
+        document.getElementById("team").innerHTML = team.map(m => `
+          <article class="card">
+            <div class="avatar">${esc(m.name.split(" ").map(w => w[0]).join("").slice(0, 2))}</div>
+            <h2>${esc(m.name)}</h2>
+            <p>${esc(m.role)}</p>
+            <div class="links">
+              <a class="btn" href="${esc(m.path)}">View portfolio →</a>
+              ${m.github ? `<a class="ghost" href="${esc(m.github)}">GitHub</a>` : ""}
+            </div>
+          </article>`).join("");
+      })
+      .catch(() => { document.getElementById("team").textContent = "Could not load the team list."; });
+  </script>
+</body>
+</html>
